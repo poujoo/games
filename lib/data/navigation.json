@@ -1,0 +1,11 @@
+{
+  "header": [
+    { "name": "Courses", "href": "/courses" },
+    { "name": "About", "href": "/about" },
+    { "name": "Community", "href": "/community" }
+  ],
+  "footer": [
+    { "name": "Contact", "href": "/contact" },
+    { "name": "Privacy", "href": "/privacy" }
+  ]
+}

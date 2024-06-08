@@ -12,7 +12,9 @@
     "moduleResolution": "bundler",
     "noEmit": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@data/*": ["./lib/data/*"],
+      "@components/*": ["./components/*"]
     },
     "plugins": [
       {
