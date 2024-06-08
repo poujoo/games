@@ -1,5 +1,5 @@
 import { NavbarItem } from "@/components/ui/navbarItem";
-import { useSidebarContext } from "@/context/SidebarContext";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import navigation from "@data/navigation.json";
 import { DarkThemeToggle, Navbar } from "flowbite-react";
 import Image from "next/image";
@@ -7,8 +7,10 @@ import Link from "next/link";
 import type { FC } from "react";
 
 export const DashboardNavbar: FC<Record<string, never>> = function () {
+  /**
   const { isCollapsed: isSidebarCollapsed, setCollapsed: setSidebarCollapsed } =
     useSidebarContext();
+     */
   const { headerLinks } = navigation;
   return (
     <div className="w-full bg-white dark:bg-gray-800">
@@ -25,8 +27,14 @@ export const DashboardNavbar: FC<Record<string, never>> = function () {
               CDM Learning
             </span>
           </Navbar.Brand>
-          <div className="flex md:order-2">
+          <div className="flex gap-2 md:order-2">
             <DarkThemeToggle />
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
             <Navbar.Toggle />
           </div>
           <Navbar.Collapse>
