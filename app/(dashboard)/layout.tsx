@@ -29,7 +29,7 @@ const DashboardLayoutContent: FC<PropsWithChildren> = function ({ children }) {
             isCollapsed ? "lg:ml-[4.5rem]" : "lg:ml-64",
           )}
         >
-          {children}
+          <div className="container mx-auto max-w-7xl">{children}</div>
         </div>
       </div>
     </>
