@@ -13,7 +13,7 @@ export const DashboardNavbar: FC<Record<string, never>> = function () {
      */
   const { headerLinks } = navigation;
   return (
-    <div className="w-full bg-white dark:bg-gray-800">
+    <div className="fixed top-0 z-30 w-full bg-white dark:bg-gray-800">
       <header className="container mx-auto max-w-7xl">
         <Navbar fluid rounded>
           <Navbar.Brand as={Link} href="/">
