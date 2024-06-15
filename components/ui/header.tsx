@@ -1,4 +1,5 @@
 import navLinks from "@/lib/data/navigation.json";
+import Image from "next/image";
 import Link from "next/link";
 import { Logo } from "./logo";
 import { Switcher } from "./theme-switcher";
@@ -110,7 +111,7 @@ export function Header() {
                 type="button"
                 className="inline-flex size-[2.375rem] items-center justify-center gap-x-2 rounded-full border border-transparent text-sm font-semibold text-gray-800 hover:bg-gray-100 disabled:pointer-events-none disabled:opacity-50 dark:text-white dark:hover:bg-neutral-700"
               >
-                <img
+                <Image
                   className="inline-block size-[38px] rounded-full ring-2 ring-white dark:ring-neutral-800"
                   src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
                   alt="Description"

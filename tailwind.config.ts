@@ -16,7 +16,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("preline/plugin")],
+  plugins: [require("preline/plugin"), require("@tailwindcss/typography")],
 };
 
 export default config;

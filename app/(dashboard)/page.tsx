@@ -1,9 +1,14 @@
 import { Header } from "@/components/ui/header";
 import { Logo } from "@/components/ui/logo";
+import { fetchPageMD } from "@/lib/utils/notion";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { Console } from "./console";
 
-export default function Page() {
+export default async function Page() {
+  const { markdown, blocks } = await fetchPageMD();
   return (
     <div>
+      <Console obj={blocks} />
       <Header />
       <div className="sticky inset-x-0 top-0 z-20 border-y bg-white px-4 sm:px-6 md:px-8 lg:hidden dark:border-neutral-700 dark:bg-neutral-800">
         <div className="flex items-center justify-between py-2">
@@ -531,7 +536,9 @@ export default function Page() {
       </div>
 
       <div className="w-full lg:ps-64">
-        <div className="space-y-4 p-4 sm:space-y-6 sm:p-6">Hello world</div>
+        <div className="prose space-y-4 p-4 sm:space-y-6 sm:p-6">
+          <MDXRemote source={markdown} />
+        </div>
       </div>
     </div>
   );
