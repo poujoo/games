@@ -26,8 +26,8 @@
   "dependencies": {
     "@clerk/nextjs": "^5.1.4",
     "next": "^14.0.3",
-    "react": "18",
     "preline": "^2.3.0",
+    "react": "18",
     "react-dom": "18",
     "react-icons": "^4.12.0",
     "tailwind-merge": "^2.0.0"
@@ -42,7 +42,7 @@
     "autoprefixer": "^10",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "^7.33.2",

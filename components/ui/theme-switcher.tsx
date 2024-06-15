@@ -3,40 +3,40 @@ export function Switcher() {
     <>
       <button
         type="button"
-        className="hs-dark-mode-active:hidden hs-dark-mode group block flex items-center font-medium text-gray-600 hover:text-blue-600 dark:text-neutral-400 dark:hover:text-neutral-500"
+        className="hs-dark-mode group block items-center font-medium text-gray-600 hover:text-blue-600 hs-dark-mode-active:hidden dark:text-neutral-400 dark:hover:text-neutral-500"
         data-hs-theme-click-value="dark"
       >
         <svg
-          className="size-4 flex-shrink-0"
+          className="size-4 shrink-0"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
         </svg>
       </button>
       <button
         type="button"
-        className="hs-dark-mode-active:block hs-dark-mode group flex hidden items-center font-medium text-gray-600 hover:text-blue-600 dark:text-neutral-400 dark:hover:text-neutral-500"
+        className="hs-dark-mode group flex items-center font-medium text-gray-600 hover:text-blue-600 hs-dark-mode-active:block dark:text-neutral-400 dark:hover:text-neutral-500"
         data-hs-theme-click-value="light"
       >
         <svg
-          className="size-4 flex-shrink-0"
+          className="size-4 shrink-0"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           <circle cx="12" cy="12" r="4"></circle>
           <path d="M12 2v2"></path>
