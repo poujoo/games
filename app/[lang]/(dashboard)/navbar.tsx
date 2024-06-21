@@ -1,5 +1,6 @@
 import { useSidebarContext } from "@/context/SidebarContext";
 import { isSmallScreen } from "@/helpers/is-small-screen";
+import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
 import { DarkThemeToggle, Navbar } from "flowbite-react";
 import Image from "next/image";
 import type { FC } from "react";
@@ -42,7 +43,15 @@ export const DashboardNavbar: FC<Record<string, never>> = function () {
                 </span>
               </Navbar.Brand>
             </div>
-            <DarkThemeToggle />
+            <div className="flex justify-end">
+              <SignedOut>
+                  <SignInButton />
+              </SignedOut>
+              <SignedIn>
+                  <UserButton />
+              </SignedIn>
+              <DarkThemeToggle />
+            </div>
           </div>
         </div>
       </Navbar>

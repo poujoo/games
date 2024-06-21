@@ -4,11 +4,13 @@ import { type FC, type PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 import "./globals.css";
 import { flowbiteTheme } from "./theme";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const RootLayout: FC<PropsWithChildren> = function ({ children }) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <head>
         <ThemeModeScript />
@@ -17,6 +19,7 @@ const RootLayout: FC<PropsWithChildren> = function ({ children }) {
         <Flowbite theme={{ theme: flowbiteTheme }}>{children}</Flowbite>
       </body>
     </html>
+    </ClerkProvider>
   );
 };
 
