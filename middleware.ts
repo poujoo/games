@@ -45,7 +45,7 @@ export default clerkMiddleware((auth, request)=>{
   if (
     [
       '/next.svg',
-      '/vercel.svg',
+      '/square.svg',
       '/favicon.ico',
       // Your other files in `public`
     ].includes(pathname)

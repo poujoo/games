@@ -1,17 +1,24 @@
-"use client";
-
 import { Card } from "flowbite-react";
-import { NextPage } from "next";
+// import { NextPage } from "next";
+import { Locale } from "../../i18n-config";
+import { getDictionary } from "@/get-dictionary";
+import { currentUser } from "@clerk/nextjs/server";
 
-
-export const HomePageContent: NextPage = function () {
+export default async function HomePage({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
+  const dictionary = await getDictionary(lang);
+  const user = await currentUser();
+  const name = user?.username;
   return (
     <div className="flex flex-col p-10">
 
       <div className="flex flex-row p-3 lg:p-10 justify-center">
         <header>
           <h1 className="text-md md:text-xl lg:text-5xl font-extrabold dark:text-white">
-            Opa's Challenges
+            {dictionary.landingPage.welcome} {name}
           </h1>
         </header>
       </div>
@@ -22,7 +29,7 @@ export const HomePageContent: NextPage = function () {
         <div className="max-w-sm">
           <Card
             imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc="/image-1.jpg">
+            imgSrc="/squares.png">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
             </h5>
@@ -35,7 +42,7 @@ export const HomePageContent: NextPage = function () {
         <div className="max-w-sm">
           <Card
             imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc="/image-1.jpg">
+            imgSrc="/squares.png">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
             </h5>
@@ -48,7 +55,7 @@ export const HomePageContent: NextPage = function () {
         <div className="max-w-sm">
           <Card
             imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc="/image-1.jpg">
+            imgSrc="/squares.png">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
             </h5>
@@ -61,7 +68,7 @@ export const HomePageContent: NextPage = function () {
         <div className="max-w-sm">
           <Card
             imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc="/image-1.jpg">
+            imgSrc="/squares.png">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
             </h5>
@@ -74,7 +81,7 @@ export const HomePageContent: NextPage = function () {
         <div className="max-w-sm">
           <Card
             imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc="/image-1.jpg">
+            imgSrc="/squares.png">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
             </h5>
