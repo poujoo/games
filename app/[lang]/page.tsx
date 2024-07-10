@@ -1,8 +1,8 @@
 import { Card } from "flowbite-react";
 // import { NextPage } from "next";
-import { Locale } from "../../i18n-config";
 import { getDictionary } from "@/get-dictionary";
 import { currentUser } from "@clerk/nextjs/server";
+import type { Locale } from "../../i18n-config";
 
 export default async function HomePage({
   params: { lang },
@@ -14,22 +14,22 @@ export default async function HomePage({
   const name = user?.username;
   return (
     <div className="flex flex-col p-10">
-
-      <div className="flex flex-row p-3 lg:p-10 justify-center">
+      <div className="flex flex-row justify-center p-3 lg:p-10">
         <header>
-          <h1 className="text-md md:text-xl lg:text-5xl font-extrabold dark:text-white">
+          <h1 className="text-md font-extrabold dark:text-white md:text-xl lg:text-5xl">
             {dictionary.landingPage.welcome} {name}
           </h1>
         </header>
       </div>
-      
-      <hr className="my-0 lg:my:10 lg:mx-10 mx-3 h-0.5 border-t-0 bg-neutral-200 dark:bg-white/10" />
 
-      <div className="flex flex-wrap justify-center p-3 lg:p-10 gap-10">
+      <hr className="lg:my:10 mx-3 my-0 h-0.5 border-t-0 bg-neutral-200 dark:bg-white/10 lg:mx-10" />
+
+      <div className="flex flex-wrap justify-center gap-10 p-3 lg:p-10">
         <div className="max-w-sm">
           <Card
             imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc="/squares.png">
+            imgSrc="/squares.png"
+          >
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
             </h5>
@@ -42,7 +42,8 @@ export default async function HomePage({
         <div className="max-w-sm">
           <Card
             imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc="/squares.png">
+            imgSrc="/squares.png"
+          >
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
             </h5>
@@ -55,7 +56,8 @@ export default async function HomePage({
         <div className="max-w-sm">
           <Card
             imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc="/squares.png">
+            imgSrc="/squares.png"
+          >
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
             </h5>
@@ -68,7 +70,8 @@ export default async function HomePage({
         <div className="max-w-sm">
           <Card
             imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc="/squares.png">
+            imgSrc="/squares.png"
+          >
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
             </h5>
@@ -81,7 +84,8 @@ export default async function HomePage({
         <div className="max-w-sm">
           <Card
             imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc="/squares.png">
+            imgSrc="/squares.png"
+          >
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
             </h5>
@@ -94,4 +98,4 @@ export default async function HomePage({
       </div>
     </div>
   );
-};
+}

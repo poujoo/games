@@ -1,11 +1,7 @@
-
 import { DarkThemeToggle, Navbar, NavbarBrand } from "flowbite-react";
 import Image from "next/image";
 import type { FC } from "react";
 import ClerkButton from "./clerkButton";
-
-
-
 
 export const DashboardNavbar: FC<Record<string, never>> = function () {
   return (
