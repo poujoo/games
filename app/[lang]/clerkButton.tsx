@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
 
 const ClerkButton: FC = function () {

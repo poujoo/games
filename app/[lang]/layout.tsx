@@ -1,6 +1,5 @@
 import { Flowbite, ThemeModeScript } from "flowbite-react";
 import { Inter } from "next/font/google";
-import { type FC, type PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 import type { Metadata } from "next";
 import "../globals.css";
