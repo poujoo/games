@@ -33,7 +33,7 @@ export default async function HomePage({
               <Card
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
                 imgSrc={`${row.picture}`}
-                href={`games/${row.name.replace(/\s+/g, '')}/rules`}
+                href={`games/${row.name.replace(/\s+/g, "")}/rules`}
               >
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   {row.name}

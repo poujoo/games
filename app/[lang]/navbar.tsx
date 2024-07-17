@@ -1,11 +1,9 @@
 import { DarkThemeToggle, Navbar, NavbarBrand } from "flowbite-react";
-import Image from "next/image";
 import type { FC } from "react";
-import ClerkButton from "./clerkButton";
 import { PiMathOperationsDuotone } from "react-icons/pi";
+import ClerkButton from "./clerkButton";
 
 export const DashboardNavbar: FC<Record<string, never>> = function () {
-
   return (
     <header>
       <Navbar
@@ -16,9 +14,9 @@ export const DashboardNavbar: FC<Record<string, never>> = function () {
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <NavbarBrand href="/">
-              <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-green-500 dark:bg-green-800 dark:text-green-200">
-                <PiMathOperationsDuotone className="h-10 w-10"/>
-              </div>
+                <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-green-500 dark:bg-green-800 dark:text-green-200">
+                  <PiMathOperationsDuotone className="h-10 w-10" />
+                </div>
                 {/* <Image
                   alt="Flowbite logo"
                   height="24"
