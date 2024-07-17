@@ -1,7 +1,7 @@
-import { Card } from "flowbite-react";
-import { sql } from "@vercel/postgres";
 import { getDictionary } from "@/get-dictionary";
 import { currentUser } from "@clerk/nextjs/server";
+import { sql } from "@vercel/postgres";
+import { Card } from "flowbite-react";
 import type { Locale } from "../../i18n-config";
 
 export default async function HomePage({
@@ -29,17 +29,17 @@ export default async function HomePage({
       <div className="flex flex-wrap justify-center gap-10 p-3 lg:p-10">
         {rows.map((row) => (
           <>
-            <div className="max-w-sm" id={`${row.game_id}`}>
+            <div className="max-w-sm" key={`${row.game_id}`}>
               <Card
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
-                imgSrc="/squares.png"
-                href={`games/${row.game_id}`}
+                imgSrc={`${row.picture}`}
+                href={`games/${row.name.replace(/\s+/g, '')}/rules`}
               >
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {row.name}
+                  {row.name}
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
-                  {row.name}
+                  {row.description}
                 </p>
               </Card>
             </div>

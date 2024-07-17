@@ -40,7 +40,7 @@ export default async function RootLayout({
             <div className="mt-16 flex items-start">
               <div
                 id="main-content"
-                className="relative h-full w-full overflow-y-auto bg-gray-50 dark:bg-gray-900"
+                className="relative m-auto overflow-y-auto bg-gray-50 dark:bg-gray-900"
               >
                 {children}
               </div>
