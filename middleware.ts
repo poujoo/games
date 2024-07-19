@@ -27,14 +27,14 @@ export default clerkMiddleware((auth, request)=>{
   const pathname = request.nextUrl.pathname;
   const locale = getLocale(request);
 
-  console.log(pathname)
+  // console.log(pathname)
   // Check if there is any supported locale in the pathname
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) =>
       !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
   );
 
-  const isPublicRoute = createRouteMatcher([`/${locale}`,"/"]);
+  const isPublicRoute = createRouteMatcher([`/${locale}`,`/${locale}/sign-in`,`/${locale}/sign-up`,"/sign-up","/sign-in","/"]);
   if(!isPublicRoute(request)) auth().protect();
 
   // const isProtectedRoute = createRouteMatcher([`/${locale}/(.*)`]);
@@ -52,9 +52,10 @@ export default clerkMiddleware((auth, request)=>{
     return
 
   // Redirect if there is no locale
+  // console.log("pathnameIsMissingLocale = " + pathnameIsMissingLocale)
   if (pathnameIsMissingLocale) {
     
-    console.log(locale)
+    // console.log(locale)
   
     // e.g. incoming request is /products
     // The new URL is now /en-US/products
@@ -74,5 +75,5 @@ export default clerkMiddleware((auth, request)=>{
 //   matcher: ["/((?!_next/static|_next/image|favicon.ico).*)", "/(api|trpc)(.*)"], 
 // };
 export const config = {
-  matcher: ["/((?!.*\\..*|_next/static|_next/image).*)", "/(api|trpc)(.*)"],
+  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
 };

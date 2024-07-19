@@ -2,6 +2,7 @@ import { buildGame } from "@/helpers/games";
 import { createContext } from "react";
 
 export type AddendumType = {
+  color: string;
   id: number;
   value: number;
   isAdded: boolean;
@@ -31,8 +32,10 @@ const gameParams: {
   { elems: 16, cols: 4, elems_sum: 20, num_sums: 2 },
   { elems: 36, cols: 6, elems_sum: 40, num_sums: 4 },
 ];
+
 const currentGameParams = gameParams.shift();
 const gameInit = buildGame(currentGameParams);
+
 const game: GameContextType = {
   addendums: gameInit,
   currentGameParams: currentGameParams,
@@ -44,3 +47,7 @@ export const GameContext = createContext({
   game,
   setGame: (game: GameContextType) => {},
 });
+
+function random(max: number) {
+  return Math.floor(Math.random() * max);
+}

@@ -14,11 +14,12 @@ export function FastSquareGame({ time }: { time: number }) {
   const { game, setGame } = useContext(GameContext);
 
   // const edges = {2:1,4:2,6:3}
-  const screens = { lg: 24, md: 16, sm: 8 };
+  // const screens = { lg: 24, md: 16, sm: 8 };
+  // const colors = ["bg-yellow-300","bg-cyan-300",]
 
-  function handleClick(id: number, val: number) {
+  async function handleClick(id: number, val: number) {
     //Set next game status
-    let nextGame = [...game.addendums];
+    let nextGame = [...(await game.addendums)];
     let nextCurrentGameParams = JSON.parse(
       JSON.stringify(game.currentGameParams),
     ); //deep copy
@@ -87,7 +88,6 @@ export function FastSquareGame({ time }: { time: number }) {
         " gap-5 size-full flex";
       // const edge = game.currentGameParams.cols/2
       const styles = "m-auto h-8 md:h-16 lg:h-24 w-8 md:w-16 lg:w-24";
-      // const styles = "m-auto h-24 w-24";
       return (
         <>
           <div className={gridClassName}>
@@ -107,7 +107,7 @@ export function FastSquareGame({ time }: { time: number }) {
                       handler={() => handleClick(g.id, g.value)}
                       isAdded={g.isAdded}
                       drop={g.drop}
-                      edge="160"
+                      color={g.color}
                     ></Addendum>
                   </div>
                 );

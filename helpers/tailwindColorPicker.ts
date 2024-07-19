@@ -1,10 +1,7 @@
-
-import { AddendumType } from "@/app/[lang]/components/fastSquareContext";
-
 function random(max:number) {
     return Math.floor(Math.random() * max);
 }
-
+// generate by running: node helpers/tailwindColorPicker_run.js
 const colors = [
     'bg-gray-200',   'bg-gray-300',   'bg-gray-400',   'bg-gray-500',
     'bg-gray-600',   'bg-gray-700',   'bg-gray-800',   'bg-red-200',
@@ -26,16 +23,10 @@ const colors = [
     'bg-violet-700', 'bg-violet-800'
   ]
 
-const l = colors.length-1
+const color_lenght = colors.length
 
-export function buildGame(currentGameParams:{elems:number, cols:number, elems_sum:number, num_sums:number}|undefined):AddendumType[]{
-    const values = Array.from(Array(currentGameParams?.elems).keys());
-    
-    return values.map((e,i) => {
-        
-        const val = Math.floor(Math.random()*10)
+export function pickTailwindColor():string {
+    const index = random(color_lenght-1);
+    return colors[index];
 
-        return {id:e,value:val,isAdded:false,drop:false,color:colors[random(l)]};
-    });
-
-} 
+}

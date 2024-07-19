@@ -7,7 +7,7 @@ export default function Addendum(props: {
   handler: any;
   isAdded: boolean;
   drop: boolean;
-  edge: string;
+  color: string;
 }) {
   // let score = useContext(GameContext);
   // console.log(score);
@@ -18,12 +18,12 @@ export default function Addendum(props: {
   };
   // const sm = (Number(props.edge) / 4).toString();
   // const md = (Number(props.edge) / 2).toString();
-  const styles = "rounded bg-indigo-500 text-white w-full h-full"; // lg:h-"+props.edge+" lg:w-"+props.edge+" h-"+sm+" w-"+sm+" md:h-"+md+" md:w-"+md
+  const styles = "rounded " + props.color + " text-white w-full h-full"; // lg:h-"+props.edge+" lg:w-"+props.edge+" h-"+sm+" w-"+sm+" md:h-"+md+" md:w-"+md
   return (
     // <div id={props.id}>
     <motion.button
       key={props.id.toString()}
-      className={styles}
+      className={`${styles}`}
       variants={variants}
       animate={props.isAdded ? "added" : props.drop ? "drop" : "neutral"}
       // animate={props.drop ? "drop" : "neutral"}
