@@ -37,7 +37,7 @@ export default function RulesPage() {
             <div className="ml-auto flex items-center space-x-2">
               <div className="justify-center rounded-lg p-1.5 text-sm font-medium text-green-500 dark:text-green-200">
                 You will be presented with 3 different squares containing 4, 16
-                and 36 numbers.
+                and 36 numbers, respectively.
               </div>
             </div>
           </Toast>
@@ -47,7 +47,8 @@ export default function RulesPage() {
             </div>
             <div className="ml-auto flex items-center space-x-2">
               <div className="justify-center rounded-lg p-1.5 text-sm font-medium text-green-500 dark:text-green-200">
-                In square 1, find one subset of numbers that sums up to 10.
+                The first square will have 4 numbers, find one subset of numbers
+                that sums up to 10.
               </div>
             </div>
           </Toast>
@@ -57,7 +58,8 @@ export default function RulesPage() {
             </div>
             <div className="ml-auto flex items-center space-x-2">
               <div className="justify-center rounded-lg p-1.5 text-sm font-medium text-green-500 dark:text-green-200">
-                In square 2, find two subsets of numbers that sums up to 20.
+                The second square will have 16 numbers, find two subsets of
+                numbers that sum up to 20.
               </div>
             </div>
           </Toast>
@@ -67,7 +69,8 @@ export default function RulesPage() {
             </div>
             <div className="ml-auto flex items-center space-x-2">
               <div className="justify-center rounded-lg p-1.5 text-sm font-medium text-green-500 dark:text-green-200">
-                In square 3, find three subsets of numbers that sums up to 40.
+                The third and final square will have 36 numbers, find three
+                subsets of numbers that sum up to 40.
               </div>
             </div>
           </Toast>
