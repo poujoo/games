@@ -13,10 +13,6 @@ export function FastSquareGame({ time }: { time: number }) {
 
   const { game, setGame } = useContext(GameContext);
 
-  // const edges = {2:1,4:2,6:3}
-  // const screens = { lg: 24, md: 16, sm: 8 };
-  // const colors = ["bg-yellow-300","bg-cyan-300",]
-
   async function handleClick(id: number, val: number) {
     //Set next game status
     let nextGame = [...(await game.addendums)];
@@ -25,6 +21,7 @@ export function FastSquareGame({ time }: { time: number }) {
     ); //deep copy
     const nextGameParams = [...game.gameParams];
     const nextGameScores = [...game.scores];
+
     //change state if addendum is added
     const addendum = nextGame.find((a) => a.id === id);
     if (addendum != undefined) addendum.isAdded = !addendum.isAdded;
@@ -40,7 +37,7 @@ export function FastSquareGame({ time }: { time: number }) {
     //Set Addendums statuses when correct sum is met
     if (
       nextCurrentGameParams != undefined &&
-      score > nextCurrentGameParams.elems_sum
+      score == nextCurrentGameParams.elems_sum
     ) {
       score = 0;
       let addendums: string = "";

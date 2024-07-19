@@ -52,7 +52,7 @@ export default function GamePage() {
       <div className="flex flex-col p-5">
         <div className="flex flex-row justify-center p-3 lg:p-10">
           <header>
-            <h1 className="text-md font-extrabold dark:text-white md:text-xl lg:text-5xl">
+            <h1 className="text-md font-extrabold  text-green-800 dark:text-green-100 md:text-xl lg:text-5xl">
               Fast Squares
             </h1>
           </header>
@@ -96,7 +96,7 @@ export default function GamePage() {
                 <IoMdTimer className="h-5 w-5" />
               </div>
               <div className="ml-auto flex items-center space-x-2">
-                <div className="rounded-lg p-1.5 text-sm font-medium text-cyan-600 hover:bg-cyan-100 dark:text-cyan-500 dark:hover:bg-gray-700">
+                <div className="rounded-lg p-1.5 text-lg font-medium text-red-600 dark:text-red-500">
                   {totalSeconds} seconds
                 </div>
               </div>
@@ -118,7 +118,7 @@ export default function GamePage() {
                         {g.addendums}
                       </div>
                       <div className="ml-auto flex items-center space-x-2">
-                        <div className="rounded-lg p-1.5 text-sm font-medium text-cyan-600 hover:bg-cyan-100 dark:text-cyan-500 dark:hover:bg-gray-700">
+                        <div className="justify-center rounded-lg p-1.5 text-sm font-medium text-green-500 dark:text-green-200">
                           {g.seconds} sec
                         </div>
                       </div>

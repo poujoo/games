@@ -46,4 +46,4 @@ export function findCombinations(greatest_number,places,sum){
     return allSum;
 }
 
-console.log(findCombinations(10,[2,3,4],10))
+// console.log(findCombinations(10,[2,3,4],10))
