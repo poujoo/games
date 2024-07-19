@@ -107,7 +107,7 @@ export function FastSquareGame({ time }: { time: number }) {
                       handler={() => handleClick(g.id, g.value)}
                       isAdded={g.isAdded}
                       drop={g.drop}
-                      color={g.color}
+                      color={`${"bg-" + g.color}`}
                     ></Addendum>
                   </div>
                 );

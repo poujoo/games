@@ -16,7 +16,7 @@ const options={colors:['gray','red','orange','yellow','lime','green','slate','sk
 let all_colors = [];
 for (let i = 0; i < options.colors.length; i++) {
     for (let j = 0; j < options.range.length; j++) {
-        all_colors.push(options.prefix+"-"+options.colors[i]+"-"+options.range[j]*100)
+        all_colors.push(options.colors[i]+"-"+options.range[j]*100)
     }
 }
 

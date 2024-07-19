@@ -9,6 +9,9 @@ const config: Config = {
   safelist:[
     {
       pattern: /grid-cols-./,
+    },
+    {
+      pattern: /bg-./,
     }
   ],
   theme: {
