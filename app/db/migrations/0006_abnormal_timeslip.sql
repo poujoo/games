@@ -1,0 +1,1 @@
+ALTER TABLE "scores" ADD COLUMN "id" serial PRIMARY KEY NOT NULL;

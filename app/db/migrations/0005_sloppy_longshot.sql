@@ -1,0 +1,1 @@
+ALTER TABLE "scores" ALTER COLUMN "game_id" SET DATA TYPE integer;

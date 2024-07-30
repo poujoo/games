@@ -3,35 +3,33 @@ import { Button, Card, Toast } from "flowbite-react";
 import { FcRules } from "react-icons/fc";
 import { GrScorecard } from "react-icons/gr";
 import { IoMdTimer } from "react-icons/io";
-import { FastSquareGame } from "../../../components/fastSquareGame";
+import { FastSquareGame } from "../components/fastSquareGame";
 
-import { buildGame } from "@/helpers/games";
 import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useStopwatch } from "react-timer-hook";
 import type {
-  CurrentGameParamsType,
   CurrentGameScoresType,
   GameContextType,
-} from "../../../components/fastSquareContext";
-import { GameContext } from "../../../components/fastSquareContext";
+} from "../components/fastSquareContext";
+import { GameContext, initGame } from "../components/fastSquareContext";
 
-export default function GamePage() {
+// export default function PageContent(props:{username:string, userID:string, gameID:number, dictionary:{title:string}}) {
+export default function PageContent(props: {
+  dictionary: { title: string };
+  userId: string;
+  gameId: number;
+}) {
   //GAME parameters
-  const gameParams: CurrentGameParamsType[] = [
-    { elems: 4, cols: 2, elems_sum: 10, num_sums: 1, sum_blocks: 1 },
-    { elems: 16, cols: 4, elems_sum: 20, num_sums: 2, sum_blocks: 3 },
-    { elems: 36, cols: 6, elems_sum: 40, num_sums: 4, sum_blocks: 5 },
-  ];
-  const currentGameParams = gameParams.shift();
-  const gameInit = buildGame(currentGameParams);
   const [game, setGame] = useState<GameContextType>({
-    addendums: gameInit,
-    currentGameParams: currentGameParams,
-    gameParams: gameParams,
-    scores: [],
+    addendums: initGame.addendums,
+    currentGameParams: initGame.currentGameParams,
+    gameParams: initGame.gameParams,
+    duration: initGame.duration,
+    scores: initGame.scores,
   });
+  const router = useRouter();
   const {
     totalSeconds,
     seconds,
@@ -44,17 +42,20 @@ export default function GamePage() {
     reset,
   } = useStopwatch({ autoStart: true });
 
-  const pathname = usePathname().split("/");
-  const relPathname = pathname.slice(2, 4);
-  const rulePathname = "/" + relPathname.join("/") + "/rules";
+  // const pathname = usePathname().split("/");
+  // const relPathname = pathname.slice(2, 4);
+  // const rulePathname = "/" + relPathname.join("/") + "/rules";
 
+  if (totalSeconds == game.duration) {
+    router.push("/games/end/" + props.gameId);
+  }
   return (
     <GameContext.Provider value={{ game, setGame }}>
       <div className="flex flex-col p-5">
         <div className="flex flex-row justify-center p-3 lg:p-10">
           <header>
             <h1 className="text-md font-extrabold  text-green-800 dark:text-green-100 md:text-xl lg:text-5xl">
-              Fast Squares
+              {props.dictionary.title}
             </h1>
           </header>
         </div>
@@ -64,7 +65,11 @@ export default function GamePage() {
         <div className="flex flex-row-reverse flex-wrap justify-center p-3 md:flex-row-reverse lg:flex-row-reverse lg:p-10">
           <div className="mb-4 ml-2 flex-auto md:ml-4 lg:ml-4">
             <Card>
-              <FastSquareGame time={totalSeconds}></FastSquareGame>
+              <FastSquareGame
+                time={totalSeconds}
+                gameId={props.gameId}
+                userId={props.userId}
+              ></FastSquareGame>
             </Card>
           </div>
           <div className="max-w-sm">
@@ -88,7 +93,7 @@ export default function GamePage() {
                   </div>
                   <div className="flex gap-2">
                     <Button
-                      href={rulePathname}
+                      href="rules"
                       className="bg-green-500 text-green-200  dark:bg-green-500 dark:text-green-200"
                     >
                       Back to rules

@@ -1,22 +1,34 @@
 "use client";
 
 // import { useState } from 'react';
+import { insertScore } from "@/app/db/queries";
 import { buildGame } from "@/helpers/games";
+import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
 import Addendum from "./addendum";
 import EmptyAddendum from "./emptyAddendum";
-import type { AddendumType } from "./fastSquareContext";
+import type { AddendumType, CurrentGameParamsType } from "./fastSquareContext";
 import { GameContext } from "./fastSquareContext";
 
-export function FastSquareGame({ time }: { time: number }) {
+export function FastSquareGame({
+  time,
+  gameId,
+  userId,
+}: {
+  time: number;
+  gameId: number;
+  userId: string;
+}) {
   const [hasMounted, setHasMounted] = React.useState(false);
 
   const { game, setGame } = useContext(GameContext);
 
+  const router = useRouter();
+
   async function handleClick(id: number, val: number) {
     //Set next game status
-    let nextGame = [...(await game.addendums)];
-    let nextCurrentGameParams = JSON.parse(
+    let nextGame = [...game.addendums];
+    let nextCurrentGameParams: CurrentGameParamsType = JSON.parse(
       JSON.stringify(game.currentGameParams),
     ); //deep copy
     const nextGameParams = [...game.gameParams];
@@ -41,18 +53,21 @@ export function FastSquareGame({ time }: { time: number }) {
     ) {
       score = 0;
       let addendums: string = "";
-      nextCurrentGameParams.num_sums -= 1;
+      const num_sums = nextCurrentGameParams.num_sums - 1;
+      nextCurrentGameParams.num_sums = num_sums;
       nextGame = nextGame.map((a) => {
         if (a.isAdded && !a.drop) {
           addendums =
             addendums == ""
               ? a.value.toString()
               : addendums + "+" + a.value.toString();
-          return { ...a, drop: !a.drop };
+          a.drop = true;
+          return a;
         } else {
           return a;
         }
       });
+
       nextGameScores.push({
         addendums: addendums + "=" + nextCurrentGameParams.elems_sum,
         seconds: time,
@@ -60,9 +75,18 @@ export function FastSquareGame({ time }: { time: number }) {
     }
 
     //Change game when all sums are met
-    if (nextCurrentGameParams?.num_sums == 0) {
+    if (
+      nextCurrentGameParams != undefined &&
+      nextCurrentGameParams.num_sums == 0
+    ) {
       nextCurrentGameParams = nextGameParams.shift();
+
       nextGame = buildGame(nextCurrentGameParams);
+    }
+
+    if (nextGameParams.length == 0 && nextCurrentGameParams == undefined) {
+      insertScore(time, userId, gameId);
+      router.push("/games/end/" + gameId);
     }
 
     //refresh game status
@@ -71,6 +95,7 @@ export function FastSquareGame({ time }: { time: number }) {
       currentGameParams: nextCurrentGameParams,
       gameParams: nextGameParams,
       scores: nextGameScores,
+      duration: game.duration,
     });
   }
 
@@ -86,7 +111,7 @@ export function FastSquareGame({ time }: { time: number }) {
       // const edge = game.currentGameParams.cols/2
       const styles = "m-auto h-8 md:h-16 lg:h-24 w-8 md:w-16 lg:w-24";
       return (
-        <>
+        <GameContext.Provider value={{ game, setGame }}>
           <div className={gridClassName}>
             {game.addendums.map((g: AddendumType) => {
               if (g.drop) {
@@ -111,7 +136,7 @@ export function FastSquareGame({ time }: { time: number }) {
               }
             })}
           </div>
-        </>
+        </GameContext.Provider>
       );
     } else {
       return (

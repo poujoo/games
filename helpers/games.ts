@@ -1,5 +1,5 @@
 
-import { AddendumType, CurrentGameParamsType } from "@/app/[lang]/components/fastSquareContext";
+import { AddendumType, CurrentGameParamsType } from "@/app/[lang]/games/game/components/fastSquareContext";
 import { findCombinations } from "./combinationSum";
 
 function random(max:number) {
@@ -48,8 +48,6 @@ export function buildGame(currentGameParams:CurrentGameParamsType):AddendumType[
         values = values.concat(topUp)
         shuffle(values)
     }
-    
-    console.log(values)
     
     return values.map((e,i) => {
         return {id:i,value:e,isAdded:false,drop:false,color:colors[random(l)]};

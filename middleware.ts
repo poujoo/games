@@ -27,7 +27,6 @@ export default clerkMiddleware((auth, request)=>{
   const pathname = request.nextUrl.pathname;
   const locale = getLocale(request);
 
-  // console.log(pathname)
   // Check if there is any supported locale in the pathname
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) =>
@@ -39,7 +38,10 @@ export default clerkMiddleware((auth, request)=>{
 
   // const isProtectedRoute = createRouteMatcher([`/${locale}/(.*)`]);
   // if (isProtectedRoute(request)) auth().protect();
-
+    // if(request.nextUrl.searchParams.get('id')) {
+    //   const nextUrl = request.nextUrl
+    //   return NextResponse.rewrite(nextUrl);
+    // }
     // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
   // If you have one
   if (
@@ -54,19 +56,16 @@ export default clerkMiddleware((auth, request)=>{
   // Redirect if there is no locale
   // console.log("pathnameIsMissingLocale = " + pathnameIsMissingLocale)
   if (pathnameIsMissingLocale) {
-    
-    // console.log(locale)
   
     // e.g. incoming request is /products
     // The new URL is now /en-US/products
     return NextResponse.redirect(
       new URL(
-        `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
-        request.url,
+        `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}${request.nextUrl.search}`,
+        request.url
       ),
     );
   }
-
 });
 
 

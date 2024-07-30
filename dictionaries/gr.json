@@ -1,5 +1,12 @@
 {
     "landingPage": {
       "welcome": "καλως ΗΡΘΑΤΕ"
+    },
+    "rules":{
+      "title": "Fast Squares",
+      "header":"Rules of the game"
+    },
+    "game":{
+      "title": "Fast Squares"
     }
   }

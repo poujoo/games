@@ -1,18 +1,20 @@
 "use client";
+
+import { initGame } from "@/app/[lang]/games/game/components/fastSquareContext";
 import { Button, Card, Toast } from "flowbite-react";
-import { usePathname } from "next/navigation";
+
 import {
   PiNumberSquareFiveDuotone,
   PiNumberSquareFourDuotone,
   PiNumberSquareOneDuotone,
+  PiNumberSquareSixDuotone,
   PiNumberSquareThreeDuotone,
   PiNumberSquareTwoDuotone,
 } from "react-icons/pi";
-export default function RulesPage() {
-  const pathname = usePathname().split("/");
-  const relPathname = pathname.slice(2, 4);
-  const gamePathname = "/" + relPathname.join("/") + "/game";
 
+export default function PageContent(props: { gameId: number }) {
+  const duration = initGame.duration;
+  const newPath = "/games/game/" + props.gameId;
   return (
     <div className="flex flex-col lg:p-10">
       <div className="flex flex-row justify-center p-3 lg:p-10">
@@ -80,12 +82,22 @@ export default function RulesPage() {
             </div>
             <div className="ml-auto flex items-center space-x-2">
               <div className="justify-center rounded-lg p-1.5 text-sm font-medium text-green-500 dark:text-green-200">
+                The game lasts for a maximum of {duration} seconds.
+              </div>
+            </div>
+          </Toast>
+          <Toast className="mb-4">
+            <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200">
+              <PiNumberSquareSixDuotone className="h-8 w-8" />
+            </div>
+            <div className="ml-auto flex items-center space-x-2">
+              <div className="justify-center rounded-lg p-1.5 text-sm font-medium text-green-500 dark:text-green-200">
                 The fastest, in finding all correct subsets, wins!
               </div>
             </div>
           </Toast>
           <Button
-            href={gamePathname}
+            href={newPath}
             className="bg-green-500 text-green-200  dark:bg-green-500 dark:text-green-200"
           >
             Play
