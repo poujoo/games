@@ -34,13 +34,13 @@ export default async function Page({
           }
         }),
       );
-      // scoresWithNames.sort((a:ScoreType,b:ScoreType)=>{
-      //   if(a.createdAt != undefined && b.createdAt != undefined){
-      //     return (a.createdAt.getTime() - b.createdAt.getTime());
-      //   }else{
-      //     return a
-      //   }
-      // })
+      scoresWithNames.sort((a: any, b: any) => {
+        if (a.score != undefined && b.score != undefined) {
+          return a.score - b.score;
+        } else {
+          return a;
+        }
+      });
     }
 
     return (
